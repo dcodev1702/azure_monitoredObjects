@@ -32,6 +32,10 @@ catch {
 if ($index -ge 0 -and $index -lt $SetCloudEnv.Count) {
 
   Connect-AzAccount -Environment $SetCloudEnv[$index]
+  
+  #Sets the Azure Cloud Subscription
+  $TenantID = (Get-AzTenant).TenantId
+  $SubscriptionID = (Get-AzSubscription).SubscriptionId
 
   #Sets the Azure Cloud Subscription
   Select-AzSubscription -TenantId $TenantID -SubscriptionId $SubscriptionID
