@@ -11,4 +11,6 @@ Via Cloud Shell or PS CLI (logged into your tenant/subscription) run the followi
 [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-windows-client) for Windows 10/11 Hosts running the Azure Monitor Agent (standalone)
 
 This is a critical piece missing from the documenation if you're setting up Monitored Objects on Cloud Environments other than Commerical (Azure Cloud).
+
 ![AMA Standalone - CLOUDENV](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/779718d0-d3b7-452c-9e6d-6ed95f0d7013)
+
