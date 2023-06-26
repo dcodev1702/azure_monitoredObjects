@@ -8,7 +8,7 @@ Via Cloud Shell or PS CLI (logged into your tenant/subscription) run the followi
 ```
 ![image](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/477ba43c-0cfa-49e5-b0dd-454099d292b0)
 
-[Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-windows-client) for Windows 10/11 Hosts running the Azure Monitor Agent (standalone)
+[Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-windows-client): Windows 10/11 Hosts running the Azure Monitor Agent (standalone)
 
 This is a critical piece missing from the documenation if you're setting up Monitored Objects on Cloud Environments other than Azure Commerical (default).
 
