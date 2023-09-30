@@ -81,7 +81,7 @@ Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method PUT -B
 #2. Create Monitored Object
 
 # "location" property value under the "body" section should be the Azure region where the MO object would be stored. It should be the "same region" where you created the Data Collection Rule. This is the location of the region from where agent communications would happen.
-$requestURL = "$resourceUrl/providers/Microsoft.Insights/monitoredObjects/$TenantID`?api-version=2021-09-01-preview"
+$requestURL = "$($resourceUrl)providers/Microsoft.Insights/monitoredObjects/$TenantID`?api-version=2021-09-01-preview"
 
 # TODO: INSERT A CHECK (API CALL) TO VALIDATE $DCRName EXISTS BEFORE PROCEEDING!
 $Location   = (Get-AzDataCollectionRule -Name $DCRName -ResourceGroupName $ResourceGroup -WarningAction SilentlyContinue).Location
