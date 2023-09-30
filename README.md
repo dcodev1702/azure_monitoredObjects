@@ -13,13 +13,13 @@ Via Cloud Shell or PS CLI (logged into your tenant/subscription) run the followi
 Create a Data Collection Rule [Windows Events] -- This is where the monitored object will be applied to. <br />
 ![Data Collection Rule [Windows]](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/2bf78e3d-2c0e-4309-9655-c8dd5eb52517)
 
+After the script is successfully ran, the Monitored Object becomes associated with the specified Data Collection Rule [MO-Win1X-Clients-Evtx-DCR] <br />
+![MO-Win1X-Clients-Evtx-DCR](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/f55a7949-7c0a-405a-9c12-14084bb3206c)
+
+
 This is a critical piece of documenation if you're setting up Monitored Objects on Cloud Environments other than Azure Commerical (default). <br />
 
 ```console
 msiexec /i AzureMonitorAgentClientSetup.msi /qn CLOUDENV="Azure US Gov" DATASTOREDIR="C:\example\folder"
 ```
 ![AMA Standalone - CLOUDENV](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/b166b3a8-23dd-4f64-93d7-bd11b84d5f2b)
-
-After the script is successfully ran, the Monitored Object becomes associated with the specified Data Collection Rule [MO-Win1X-Clients-Evtx-DCR] <br />
-![MO-Win1X-Clients-Evtx-DCR](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/f55a7949-7c0a-405a-9c12-14084bb3206c)
-
