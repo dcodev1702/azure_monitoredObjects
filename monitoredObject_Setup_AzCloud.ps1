@@ -60,6 +60,14 @@ $AuthenticationHeader = @{
   "Authorization" = "Bearer " + $auth.Token
 }
 
+#0. Validate Data Collection Rule Existence
+$requestURL = "$($resourceUrl)subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Insights/dataCollectionRules/$DCRName`?api-version=2022-06-01"
+$Respond = Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method GET -Verbose
+if ($Respond -eq $null) {
+  Write-Host "Data Collection Rule $DCRName does not exist. Create DCR before proceeding, exiting script." -ForegroundColor Red
+  Exit
+}
+
 #1. Assign ‘Monitored Object Contributor’ Role to the operator
 $newguid = (New-Guid).Guid
 $UserObjectID = $user.Id
