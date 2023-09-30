@@ -15,6 +15,5 @@ This is a critical piece of documenation if you're setting up Monitored Objects 
 ```console
 msiexec /i AzureMonitorAgentClientSetup.msi /qn CLOUDENV="Azure US Gov" DATASTOREDIR="C:\example\folder"
 ```
-![AMA Standalone - CLOUDENV](![67BC5341-E1F3-419F-8DFC-043FED836916](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/3a419ad8-9903-4be7-933a-d0053bbc208f)
-)
+![AMA Standalone - CLOUDENV](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/e18d6fa0-0017-4559-b8bf-fe8dd75f8c54)
 
