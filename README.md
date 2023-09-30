@@ -1,7 +1,7 @@
-# Azure Monitored Objects
-Information how to setup Monitored Objects in Azure for on-premises Win 10/11 (AADJ/HAADH) Clients using the Azure Monitor Agent (AMA)
+# Azure Monitored Objects - Azure Monitor Agent (AMA)
+Information how to setup Monitored Objects in Azure for on-premises Win 10/11 (AADJ/HAADH) Clients using the standalone version of Azure Monitor Agent (AMA)
 
-Via Cloud Shell or PS CLI (logged into your tenant/subscription) run the following command to ensure Monitored Objects are supported in your Cloud Environment.
+Via Cloud Shell or PS CLI (log into your tenant/subscription) run the following command to ensure Monitored Objects are supported in your Cloud Environment.
 
 ```console
 (Get-AzResourceProvider -ProviderNamespace Microsoft.Insights).ResourceTypes | ? { $_.ResourceTypeName -eq 'monitoredObjects' } | % { Write-Host $_.ResourceTypeName }
