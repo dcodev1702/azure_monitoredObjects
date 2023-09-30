@@ -73,7 +73,7 @@ $body = @"
   }
 "@
 
-$requestURL = "$resourceUrl/providers/microsoft.insights/providers/microsoft.authorization/roleassignments/$newguid`?api-version=2021-04-01-preview"
+$requestURL = "$($resourceUrl)providers/microsoft.insights/providers/microsoft.authorization/roleassignments/$newguid`?api-version=2021-04-01-preview"
 
 Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method PUT -Body $body
 
@@ -82,6 +82,8 @@ Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method PUT -B
 
 # "location" property value under the "body" section should be the Azure region where the MO object would be stored. It should be the "same region" where you created the Data Collection Rule. This is the location of the region from where agent communications would happen.
 $requestURL = "$resourceUrl/providers/Microsoft.Insights/monitoredObjects/$TenantID`?api-version=2021-09-01-preview"
+
+# TODO: INSERT A CHECK (API CALL) TO VALIDATE $DCRName EXISTS BEFORE PROCEEDING!
 $Location   = (Get-AzDataCollectionRule -Name $DCRName -ResourceGroupName $ResourceGroup -WarningAction SilentlyContinue).Location
 
 $body = @"
@@ -94,13 +96,14 @@ $body = @"
 
 $Respond = Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method PUT -Body $body -Verbose
 $RespondID = $Respond.id
+$RespondID = $RespondID.Substring(1)
 
 ##########################
 #3. Associate DCR to Monitored Object
 #See reference documentation https://learn.microsoft.com/en-us/rest/api/monitor/data-collection-rule-associations/create?tabs=HTTP
 $associationName = "MOAssoc01" #You can define your custom associationname, must change the association name to a unique name, if you want to associate multiple DCR to monitored object
 
-$requestURL = "$resourceUrl$RespondId/providers/microsoft.insights/datacollectionruleassociations/$associationName`?api-version=2021-09-01-preview"
+$requestURL = "$($resourceUrl)$RespondId/providers/microsoft.insights/datacollectionruleassociations/$associationName`?api-version=2022-06-01"
 $body = @"
   {
       "properties": {
