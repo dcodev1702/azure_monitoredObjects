@@ -24,3 +24,10 @@ This is a critical piece of documenation if you're setting up Monitored Objects 
 msiexec /i AzureMonitorAgentClientSetup.msi /qn CLOUDENV="Azure US Gov" DATASTOREDIR="C:\example\folder"
 ```
 ![AMA Standalone - CLOUDENV](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/b166b3a8-23dd-4f64-93d7-bd11b84d5f2b)
+
+Windows 10 - Azure Monitor Agent (AMA) installed.  <br />
+[]()
+
+Windows 10 Client w/HAADJ successfully using Azure Monitor Agent (AMA) and the Monitored Object. <br />
+![Windows 10 w/AMA via Monitored Object](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/faac9ab4-1d67-4b96-8848-70bcfe96dfba)
+
