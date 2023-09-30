@@ -1,5 +1,5 @@
 # Azure Monitored Objects - Azure Monitor Agent (AMA)
-Information how to setup Monitored Objects in Azure for on-premises Win 10/11 (AADJ/HAADH) Clients using the standalone version of Azure Monitor Agent (AMA)
+Information how to setup Monitored Objects in Azure for on-premises Win 10/11 (AADJ/HAADH) clients using the standalone version of Azure Monitor Agent (AMA)
 
 Via Cloud Shell or PS CLI (log into your tenant/subscription) run the following command to ensure Monitored Objects are supported in your Cloud Environment.
 
@@ -8,7 +8,7 @@ Via Cloud Shell or PS CLI (log into your tenant/subscription) run the following 
 ```
 ![image](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/477ba43c-0cfa-49e5-b0dd-454099d292b0)
 
-[Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-windows-client): Windows 10/11 Hosts running the Azure Monitor Agent (standalone)
+[Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-windows-client): Windows 10/11 Hosts running Azure Monitor Agent (standalone)
 
 Create a Data Collection Rule [Windows Events] -- This is where the monitored object will be applied to. <br />
 ![Data Collection Rule [Windows]](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/033f7c91-422a-41f8-b14d-7a0f845c94c2)
