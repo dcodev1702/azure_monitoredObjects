@@ -19,3 +19,7 @@ This is a critical piece of documenation if you're setting up Monitored Objects 
 msiexec /i AzureMonitorAgentClientSetup.msi /qn CLOUDENV="Azure US Gov" DATASTOREDIR="C:\example\folder"
 ```
 ![AMA Standalone - CLOUDENV](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/b166b3a8-23dd-4f64-93d7-bd11b84d5f2b)
+
+When the Monitored Object is successfully associated with the specified Data Collection Rule [MO-Win1X-Clients-Evtx-DCR] <br />
+![MO-Win1X-Clients-Evtx-DCR](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/f55a7949-7c0a-405a-9c12-14084bb3206c)
+
