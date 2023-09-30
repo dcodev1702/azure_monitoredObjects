@@ -10,6 +10,9 @@ Via Cloud Shell or PS CLI (logged into your tenant/subscription) run the followi
 
 [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-windows-client): Windows 10/11 Hosts running the Azure Monitor Agent (standalone)
 
+Create a Data Collection Rule [Windows Events] -- This is where the monitored object will be applied to. <br />
+![Data Collection Rule [Windows]](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/2bf78e3d-2c0e-4309-9655-c8dd5eb52517)
+
 This is a critical piece of documenation if you're setting up Monitored Objects on Cloud Environments other than Azure Commerical (default). <br />
 
 ```console
