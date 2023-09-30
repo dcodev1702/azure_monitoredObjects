@@ -11,7 +11,8 @@ Via Cloud Shell or PS CLI (logged into your tenant/subscription) run the followi
 [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-windows-client): Windows 10/11 Hosts running the Azure Monitor Agent (standalone)
 
 Create a Data Collection Rule [Windows Events] -- This is where the monitored object will be applied to. <br />
-![Data Collection Rule [Windows]](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/2bf78e3d-2c0e-4309-9655-c8dd5eb52517)
+![Data Collection Rule [Windows]](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/033f7c91-422a-41f8-b14d-7a0f845c94c2)
+
 
 After the script is successfully ran, the Monitored Object becomes associated with the specified Data Collection Rule [MO-Win1X-Clients-Evtx-DCR] <br />
 ![MO-Win1X-Clients-Evtx-DCR](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/f55a7949-7c0a-405a-9c12-14084bb3206c)
