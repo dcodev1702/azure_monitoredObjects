@@ -95,8 +95,7 @@ $body = @"
 "@
 
 $Respond = Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method PUT -Body $body -Verbose
-$RespondID = $Respond.id
-$RespondID = $RespondID.Substring(1)
+$RespondID = $($Respond.id).Substring(1)
 
 ##########################
 #3. Associate DCR to Monitored Object
