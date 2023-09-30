@@ -1,5 +1,5 @@
 $ResourceGroup = "sec_telem_law_1"                    #Your Resource Group
-$DCRName       = "MO-Win10-Evtx-00"                   #Your Data Collection Rule (must already exist)
+$DCRName       = "MO-Win1X-Clients-Evtx-DCR"                   #Your Data Collection Rule for Windows (must already exist)
 $SetCloudEnv   = @("AzureCloud","AzureUSGovernment")  #Cloud Environment List
 $index         = $null
 
