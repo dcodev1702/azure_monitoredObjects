@@ -30,5 +30,6 @@ Windows 10 - Azure Monitor Agent (AMA) installed.  <br />
 
 
 Windows 10 Client w/HAADJ successfully using Azure Monitor Agent (AMA) and the Monitored Object. <br />
-![Windows 10 w/AMA via Monitored Object](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/faac9ab4-1d67-4b96-8848-70bcfe96dfba)
+![Windows 10 w/AMA via Monitored Object](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/7fdc02f7-a028-4bca-ab34-37da50a81151)
+
 
