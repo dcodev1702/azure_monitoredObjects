@@ -18,7 +18,7 @@ After the script is successfully ran, the Monitored Object becomes associated wi
 ![MO-Win1X-Clients-Evtx-DCR](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/f55a7949-7c0a-405a-9c12-14084bb3206c)
 
 
-This is a critical piece of documenation if you're setting up Monitored Objects on Cloud Environments other than Azure Commerical (default). <br />
+This is a critical piece of documenation if you're setting up Monitored Objects on Cloud Environments other than Azure Commercial (default). <br />
 
 ```console
 msiexec /i AzureMonitorAgentClientSetup.msi /qn CLOUDENV="Azure US Gov" DATASTOREDIR="C:\example\folder"
