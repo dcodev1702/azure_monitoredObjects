@@ -20,6 +20,7 @@ After the script is successfully ran, the Monitored Object becomes associated wi
 
 This is a critical piece of documenation if you're setting up Monitored Objects on Cloud Environments other than Azure Commercial (default). <br />
 
+Execute this command via cmd.exe runas Administrator
 ```console
 msiexec /i AzureMonitorAgentClientSetup.msi /qn CLOUDENV="Azure US Gov"
 ```
