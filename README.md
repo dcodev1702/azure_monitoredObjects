@@ -21,7 +21,7 @@ After the script is successfully ran, the Monitored Object becomes associated wi
 This is a critical piece of documenation if you're setting up Monitored Objects on Cloud Environments other than Azure Commercial (default). <br />
 
 ```console
-msiexec /i AzureMonitorAgentClientSetup.msi /qn CLOUDENV="Azure US Gov" DATASTOREDIR="C:\example\folder"
+msiexec /i AzureMonitorAgentClientSetup.msi /qn CLOUDENV="Azure US Gov"
 ```
 ![AMA Standalone - CLOUDENV](https://github.com/dcodev1702/azure_monitoredObjects/assets/32214072/b166b3a8-23dd-4f64-93d7-bd11b84d5f2b)
 
