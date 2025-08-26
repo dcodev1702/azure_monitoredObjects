@@ -1,6 +1,6 @@
-$ResourceGroup = "sec_telem_law_1"                    #Your Resource Group
-$DCRName       = "MO-Win1X-Clients-Evtx-DCR"          #Your Data Collection Rule for Windows (must already exist within Az Monitor)
-$SetCloudEnv   = @("AzureCloud","AzureUSGovernment")  #Cloud Environment List
+$ResourceGroup = "SecOps"                             # Your Resource Group
+$DCRName       = "WIN-CLIENTS-MonitoredObject-DCR"    # Your Data Collection Rule for Windows (must already exist within Az Monitor)
+$SetCloudEnv   = @("AzureCloud","AzureUSGovernment")  # Cloud Environment List
 $index         = $null
 
 Write-Host "`nGreetings! Please select your cloud environment: " -ForegroundColor Yellow
@@ -31,44 +31,58 @@ catch {
 # Login to the selected Azure Cloud Tenant & Environment
 if ($index -ge 0 -and $index -lt $SetCloudEnv.Count) {
 
-  Connect-AzAccount -Environment $SetCloudEnv[$index]
-  
-  #Sets the Azure Cloud Subscription
-  $TenantID = (Get-AzTenant).TenantId
-  $SubscriptionID = (Get-AzSubscription).SubscriptionId
+  # Check to see if Get-AzContext has already been set.
+  if (-not (Get-AzContext -ErrorAction SilentlyContinue)) {
+      Connect-AzAccount -Environment $SetCloudEnv[$index]
+  }
 
   #Sets the Azure Cloud Subscription
-  Select-AzSubscription -TenantId $TenantID -SubscriptionId $SubscriptionID
+  $TenantID = (Get-AzContext).Tenant.Id
+  $SubscriptionID = (Get-AzContext).Subscription.Id
 
-  #Sets the Azure Cloud API URL
+  # Sets the Azure Cloud Subscription
+  # Select-AzSubscription -TenantId $TenantID -SubscriptionId $SubscriptionID
+
+  # Sets the Azure Cloud API URL
   $resourceUrl = (Get-AzContext).Environment.ResourceManagerUrl
 }else{
   Write-Host "Invalid Cloud Environment selected, exiting script." -ForegroundColor Red
   Exit
 }
 
+$auth = Get-AzAccessToken -ResourceUrl $resourceUrl -TenantId $AADTenantId
+$raw  = $auth.Token
+if (-not $raw) { $raw = $auth.AccessToken }  # older Az versions
+
+# Az.Account 5.20 & greater uses SecureString by default
+# You might need to convert it to plain text for REST API calls
+$token =
+  if ($raw -is [securestring]) {
+    (New-Object System.Net.NetworkCredential("", $raw)).Password
+  } else {
+    [string]$raw
+  }
+
+$Header = @{
+  "Content-Type" = "application/json"
+  "Authorization" = "Bearer " + $token
+}
+
 #############################
 #0. Validate Data Collection Rule (Windows) Existence
 $requestURL = "$($resourceUrl)subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Insights/dataCollectionRules/$DCRName`?api-version=2022-06-01"
-$Respond = Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method GET -Verbose
+$Respond = Invoke-RestMethod -Uri $requestURL -Headers $Header -Method GET -Verbose
 if ($Respond -eq $null) {
   Write-Host "Data Collection Rule $DCRName does not exist. Create DCR before proceeding, exiting script." -ForegroundColor Red
   Exit
 }
 
-#Grant Access to User at root scope "/"
-#It is required that you have ownership level permissions at the TENANT LEVEL within Entra ID.
+# Grant Access to User at root scope "/"
+# It is required that you have ownership level permissions at the TENANT LEVEL within Entra ID.
 $user = Get-AzADUser -UserPrincipalName (Get-AzContext).Account
 
 New-AzRoleAssignment -Scope '/' -RoleDefinitionName 'Owner' -ObjectId $user.Id
 
-#Create Auth Token
-$auth = Get-AzAccessToken
-
-$AuthenticationHeader = @{
-  "Content-Type" = "application/json"
-  "Authorization" = "Bearer " + $auth.Token
-}
 
 ###########################
 #1. Assign ‘Monitored Object Contributor’ Role to the operator
@@ -85,7 +99,7 @@ $body = @"
 "@
 
 $requestURL = "$($resourceUrl)providers/microsoft.insights/providers/microsoft.authorization/roleassignments/$newguid`?api-version=2021-04-01-preview"
-Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method PUT -Body $body
+Invoke-RestMethod -Uri $requestURL -Headers $Header -Method PUT -Body $body
 
 ##########################
 #2. Create Monitored Object
@@ -103,7 +117,7 @@ $body = @"
   }
 "@
 
-$Respond = Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method PUT -Body $body -Verbose
+$Respond = Invoke-RestMethod -Uri $requestURL -Headers $Header -Method PUT -Body $body -Verbose
 $RespondID = $($Respond.id).Substring(1)
 
 ##########################
@@ -120,4 +134,4 @@ $body = @"
   }
 "@
 
-Invoke-RestMethod -Uri $requestURL -Headers $AuthenticationHeader -Method PUT -Body $body
+Invoke-RestMethod -Uri $requestURL -Headers $Header -Method PUT -Body $body
