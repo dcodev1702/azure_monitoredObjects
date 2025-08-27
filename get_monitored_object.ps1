@@ -30,7 +30,12 @@ function Get-ARMTokenString {
     return [string]$tok
 }
 
-# Context (assumes you've already Connect-AzAccount'd)
+# Check to see if Get-AzContext has already been set.
+if (-not (Get-AzContext -ErrorAction SilentlyContinue)) {
+    Connect-AzAccount
+}
+
+# Context (assumes you've already Connect-AzAccount)
 $TenantID       = (Get-AzContext).Tenant.Id
 $SubscriptionID = (Get-AzContext).Subscription.Id
 $resourceUrl    = (Get-AzContext).Environment.ResourceManagerUrl
