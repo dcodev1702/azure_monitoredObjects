@@ -10,8 +10,6 @@ function Get-ARMTokenString {
     param()
 
     # Get current ARM resource URL (works in Public or Gov)
-    # $ctx = Get-AzContext -ErrorAction Stop
-    # $env = Get-AzEnvironment -Name $ctx.Environment
     $resourceUrl = (Get-AzContext).Environment.ResourceManagerUrl
 
     # Grab token
@@ -29,7 +27,6 @@ function Get-ARMTokenString {
             }
         }
     }
-
     return [string]$tok
 }
 
